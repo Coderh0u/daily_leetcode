@@ -3,8 +3,8 @@
  * @param {string} t
  * @return {boolean}
  */
-var isSubsequence = function(s, t) {
-   const sChars = s.split("");
+var isSubsequence = function (s, t) {
+  const sChars = s.split("");
   const tChars = t.split("");
   // default to true
   let output = true;
@@ -15,12 +15,11 @@ var isSubsequence = function(s, t) {
   // if s is a string,
   for (let i = 0; i < sChars.length; i++) {
     const posA = tChars.indexOf(sChars[i]);
-     tChars.splice(0, posA + 1);
+    tChars.splice(0, posA + 1);
     // check if character exists
     if (posA === -1) {
       output = false;
     }
-
   }
   console.log(output);
   return output;
