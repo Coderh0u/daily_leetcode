@@ -4,23 +4,16 @@
  * @return {boolean}
  */
 var isSubsequence = function (s, t) {
-  const sChars = s.split("");
-  const tChars = t.split("");
-  // default to true
-  let output = true;
-  // if s is a single character, check if it exists in t
-  if (s.length === 1 && tChars.indexOf(sChars[0]) === -1) {
-    output = false;
-  }
-  // if s is a string,
-  for (let i = 0; i < sChars.length; i++) {
-    const posA = tChars.indexOf(sChars[i]);
-    tChars.splice(0, posA + 1);
-    // check if character exists
-    if (posA === -1) {
-      output = false;
+  let sIdx = 0;
+  let tIdx = 0;
+
+  while (sIdx < s.length && tIdx < t.length) {
+    if (s[sIdx] === t[tIdx]) {
+      sIdx++;
     }
+    tIdx++;
   }
-  console.log(output);
-  return output;
+  console.log(sIdx === s.length);
+  return sIdx === s.length;
 };
+
