@@ -3,11 +3,19 @@
  * @return {boolean}
  */
 var isMonotonic = function (nums) {
-  let interArr = [];
-  for (let i = 0; i < nums.length -1; i++) {
-    interArr.push(nums[i] - nums[i + 1]);
+  let increasing = false;
+  let decreasing = false;
+  for (let i = 0; i < nums.length - 1; i++) {
+    if (nums[i] < nums[i + 1]) {
+      increasing = true;
+    }
+    if (nums[i] > nums[i + 1]) {
+      decreasing = true;
+    }
   }
-  if (interArr.every((elem) => elem >= 0)) return true;
-  if (interArr.every((elem) => elem <= 0)) return true;
-  else return false;
+  if (increasing && decreasing) {
+    return false;
+  } else {
+    return true;
+  }
 };
