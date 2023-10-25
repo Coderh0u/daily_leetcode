@@ -4,12 +4,15 @@
  * @return {number[]}
  */
 var twoSum = function(numbers, target) {
-      const idx = {};
-  for (let i = 0; i < numbers.length; i++) {
-    const idx2 = target - numbers[i];
-    if (idx2 in idx) {
-      return [idx[idx2] + 1, i + 1];
+  let left = 0;
+  let right = numbers.length - 1;
+  while (numbers[left] + numbers[right] !== target) {
+    if (numbers[left] + numbers[right] > target) {
+      right--;
     }
-    idx[numbers[i]] = i;
+    if (numbers[left] + numbers[right] < target) {
+      left++;
+    }
   }
+  return [left + 1, right + 1];
 };
